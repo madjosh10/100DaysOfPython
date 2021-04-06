@@ -20,11 +20,16 @@ for article_tag in articles:
     article_links.append(link)
 
 
-article_upvotes = [score.getText() for score in soup.find_all(name="span", class_="score")]
+article_upvotes = [int(score.getText().split()[0]) for score in soup.find_all(name="span", class_="score")]
 
-print(article_texts)
-print(article_links)
-print(article_upvotes)
+# print(article_texts)
+# print(article_links)
+# print(article_upvotes)
+largest_number = max(article_upvotes)
+print(largest_number)
+largest_index = article_upvotes.index(largest_number)
+print(article_texts[largest_index])
+print(article_links[largest_index])
 
 
 # with open("website.html", encoding='utf-8') as file:
